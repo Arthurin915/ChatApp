@@ -40,14 +40,14 @@
             .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7018/chat"))
             .Build();
 
-        hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+        hubConnection.On<string>("ReceiveMessage", (message) =>
         {
-            var encodedMsg = $"{user}: {message}";
-            messages.Add(encodedMsg);
+            messages.Add(message);
             InvokeAsync(StateHasChanged);
         });
 
         await hubConnection.StartAsync();
+        await hubConnection.SendAsync("JoinChat", "arthur");
     }
 
     private async Task Send()

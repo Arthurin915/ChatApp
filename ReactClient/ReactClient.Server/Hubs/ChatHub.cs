@@ -5,8 +5,13 @@ namespace ReactClient.Server.Hubs
 {
     public class ChatHub : Hub
     {
-        public override async Task OnConnectedAsync() =>  await Clients.All.SendAsync("AllClientsNotification", $"{Context.ConnectionId} has joined the chat.");
-        public override async Task OnDisconnectedAsync(Exception? exception) => await Clients.All.SendAsync("AllClientsNotification", $"{Context.ConnectionId} has just left the chat.");
-        
+        public async Task JoinChat(string user)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", $"{user} has joined");
+        }
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", $"{user} sent message: {message}");
+        }
     }
 }
