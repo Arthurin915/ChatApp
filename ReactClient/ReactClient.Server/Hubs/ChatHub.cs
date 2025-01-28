@@ -9,9 +9,9 @@ namespace ReactClient.Server.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", $"{user} has joined");
         }
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessage(string user)
         {
-            await Clients.All.SendAsync("ReceiveMessage", $"{user} sent message: {message}");
+            await Clients.All.SendAsync("ReceiveMessage", $"{user} has joined");
         }
     }
 }

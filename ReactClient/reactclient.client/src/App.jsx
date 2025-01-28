@@ -1,49 +1,47 @@
-import { useEffect, useState } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Col, Row, Container } from 'react-bootstrap';
+import WaitingRoom from './components/waitingRoom';
+import { useState } from 'react';
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
 
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
+    const [connection, setConnection] = useState();
 
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+    const joinChatRoom = async(username, chatroom) => {
+        try {
+            const conn = new HubConnectionBuilder()
+            .withUrl("https://localhost:7018/chat").build();
+            
+            conn.on('ReceiveMessage', (msg) => {
+                console.log("join chat by react", msg);
+                
+            });
+    
+            await conn.start();
+            await conn.invoke("JoinChat", username)
+            setConnection(conn);
+        } catch(e) {
+            console.log(e);
+        }
 
+    
+    }
     return (
         <div>
-            <h1 id="tabelLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+            <main>
+                <Container>
+                    <Row className="px-5 my-5">
+                        <Col sm="12">
+                        <h1 className="font-weight-light">Welcome to ChatApp</h1>
+                        </Col>
+                    </Row>
+                    <WaitingRoom joinChatRoom={joinChatRoom}></WaitingRoom>
+                </Container>
+            </main>
         </div>
     );
-    
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
 }
 
 export default App;
