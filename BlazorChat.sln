@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorChatClient", "BlazorChatClient\BlazorChatClient.csproj", "{81B3EF14-AEF0-43BA-A84B-9615639ECD7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactClient.Server", "ReactClient\ReactClient.Server\ReactClient.Server.csproj", "{0D3798ED-5AE5-4937-B63C-81675F3C49C7}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactclient.client", "ReactClient\reactclient.client\reactclient.client.esproj", "{9365BCD6-DCA8-45DE-BDD9-F768B12EE0BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81B3EF14-AEF0-43BA-A84B-9615639ECD7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81B3EF14-AEF0-43BA-A84B-9615639ECD7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81B3EF14-AEF0-43BA-A84B-9615639ECD7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81B3EF14-AEF0-43BA-A84B-9615639ECD7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D3798ED-5AE5-4937-B63C-81675F3C49C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D3798ED-5AE5-4937-B63C-81675F3C49C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D3798ED-5AE5-4937-B63C-81675F3C49C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D3798ED-5AE5-4937-B63C-81675F3C49C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9365BCD6-DCA8-45DE-BDD9-F768B12EE0BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9365BCD6-DCA8-45DE-BDD9-F768B12EE0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9365BCD6-DCA8-45DE-BDD9-F768B12EE0BE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9365BCD6-DCA8-45DE-BDD9-F768B12EE0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9365BCD6-DCA8-45DE-BDD9-F768B12EE0BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9365BCD6-DCA8-45DE-BDD9-F768B12EE0BE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66EA042F-B756-4F0F-B797-8EF7C4F32554}
+	EndGlobalSection
+EndGlobal
